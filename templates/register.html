@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create Account | FarmConnect{% endblock %}
+
+{% block content %}
+<section class="auth-section">
+    <div class="auth-card">
+        <div class="text-center mb-4">
+            <span class="section-label">JOIN FARMCONNECT</span>
+            <h2 class="auth-title">Create your account</h2>
+            <p class="text-muted">Start connecting with the agricultural marketplace.</p>
+        </div>
+
+        <div id="registerMessage" class="alert d-none"></div>
+
+        <form id="registerForm">
+            <div class="mb-3">
+                <label class="form-label">I want to join as</label>
+                <select name="role" id="role" class="form-select" required>
+                    <option value="">Select account type</option>
+                    <option value="FARMER">Farmer</option>
+                    <option value="BUYER">Buyer</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">First name</label>
+                    <input type="text" name="first_name" class="form-control" required>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Last name</label>
+                    <input type="text" name="last_name" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Location</label>
+                <input type="text" name="location" class="form-control"
+                       placeholder="e.g. Ilorin, Kwara State" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone number</label>
+                <input type="tel" name="phone_number" class="form-control" required>
+            </div>
+
+            <div id="farmerFields" class="mb-3 d-none">
+                <label class="form-label">Farm name</label>
+                <input type="text" name="farm_name" id="farmName" class="form-control">
+            </div>
+
+            <div id="buyerFields" class="mb-3 d-none">
+                <label class="form-label">Business name (optional)</label>
+                <input type="text" name="business_name" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Confirm password</label>
+                <input type="password" name="password2" class="form-control" required>
+            </div>
+
+            <button type="submit" id="registerButton"
+                    class="btn btn-success w-100 btn-lg">
+                Create Account
+            </button>
+        </form>
+
+        <p class="text-center mt-4 mb-0">
+            Already have an account?
+            <a href="/login/" class="auth-link">Login</a>
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}

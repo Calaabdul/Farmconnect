@@ -1,0 +1,59 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Buyer Dashboard | FarmConnect{% endblock %}
+
+{% block content %}
+<section class="dashboard-section">
+    <div class="container py-5">
+        <div class="dashboard-heading">
+            <div>
+                <span class="section-label">BUYER WORKSPACE</span>
+                <h1>Welcome, <span id="buyerName">Buyer</span></h1>
+                <p>Track your produce inquiries and discover available crops.</p>
+            </div>
+
+            <a href="/marketplace/" class="btn btn-success">
+                Browse produce
+            </a>
+        </div>
+
+        <div id="dashboardMessage" class="alert d-none"></div>
+
+        <div class="row g-4 my-3">
+            <div class="col-md-4">
+                <div class="dashboard-stat stat-green">
+                    <span>Total inquiries</span>
+                    <h2 id="buyerTotal">—</h2>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-stat stat-amber">
+                    <span>Pending</span>
+                    <h2 id="buyerPending">—</h2>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="dashboard-stat stat-terracotta">
+                    <span>Accepted</span>
+                    <h2 id="buyerAccepted">—</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-panel mt-4">
+            <h4 class="mb-4">My produce inquiries</h4>
+            <div id="buyerInquiries">
+                Loading inquiries...
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Marketplace | FarmConnect{% endblock %}
+
+{% block content %}
+
+<section class="marketplace-header">
+    <div class="container">
+        <span class="section-label">FARMCONNECT MARKETPLACE</span>
+        <h1>Discover fresh agricultural produce</h1>
+        <p>Find available produce from farmers and connect directly.</p>
+    </div>
+</section>
+
+<!-- AI SEARCH SECTION -->
+<section id="aiSearchSection" class="container pt-5 d-none">
+    <div class="dashboard-panel p-4">
+        <span class="section-label">AI PRODUCE MATCHING</span>
+        <h3 class="mt-2">What produce are you looking for?</h3>
+        <p class="text-muted">
+            Describe the crop, quantity, location and budget you need.
+        </p>
+
+        <form id="aiSearchForm">
+            <div class="mb-3">
+                <textarea
+                    id="aiSearchInput"
+                    class="form-control"
+                    rows="3"
+                    maxlength="1000"
+                    required
+                    placeholder="Example: I need 500kg of maize in Ilorin with a budget of $300."
+                ></textarea>
+            </div>
+
+            <button
+                type="submit"
+                id="aiSearchButton"
+                class="btn btn-success"
+            >
+                Find matching farmers
+            </button>
+        </form>
+
+        <div id="aiSearchMessage" class="mt-3"></div>
+
+        <div id="aiResultsSection" class="mt-4 d-none">
+            <h5 class="fw-bold mb-3">Matching produce and farmers</h5>
+            <div id="aiResults" class="row g-4"></div>
+        </div>
+    </div>
+</section>
+
+<!-- NORMAL MARKETPLACE -->
+<section class="container py-5">
+    <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <input
+                type="search"
+                id="searchInput"
+                class="form-control form-control-lg"
+                placeholder="Search rice, yam, maize, location..."
+            >
+        </div>
+
+        <div class="col-md-3">
+            <select id="categoryFilter" class="form-select form-select-lg">
+                <option value="">All categories</option>
+            </select>
+        </div>
+
+        <div class="col-md-3">
+            <select id="orderingFilter" class="form-select form-select-lg">
+                <option value="-created_at">Newest first</option>
+                <option value="price">Price: Low to high</option>
+                <option value="-price">Price: High to low</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold mb-0">Available produce</h4>
+        <span id="resultCount" class="text-muted"></span>
+    </div>
+
+    <div id="loadingMessage" class="text-center py-5">
+        Loading produce...
+    </div>
+
+    <div id="errorMessage" class="alert alert-danger d-none"></div>
+
+    <div id="produceContainer" class="row g-4"></div>
+
+    <div id="emptyMessage" class="text-center py-5 d-none">
+        <h5>No produce found</h5>
+        <p class="text-muted">Try another search or category.</p>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/marketplace.js' %}"></script>
+{% endblock %}

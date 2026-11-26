@@ -1,0 +1,103 @@
+
+{% extends "base.html" %}
+
+{% block title %}FarmConnect | Agricultural Marketplace{% endblock %}
+
+{% block content %}
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="hero-label">AGRICULTURAL MARKETPLACE</span>
+
+                <h1 class="hero-title">
+                    From the farm<br>
+                    <span>to the right buyer.</span>
+                </h1>
+
+                <p class="hero-text">
+                    FarmConnect helps farmers showcase their produce
+                    and connects buyers with the agricultural products
+                    they need.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap mt-4">
+                    <a href="/marketplace/" class="btn btn-success btn-lg">
+                        Explore Produce
+                    </a>
+                    <a href="/register/" class="btn btn-outline-success btn-lg">
+                        Join FarmConnect
+                    </a>
+                </div>
+
+                <div class="hero-stats mt-5">
+                    <div>
+                        <h4>Farmers</h4>
+                        <p>Showcase your produce</p>
+                    </div>
+                    <div>
+                        <h4>Buyers</h4>
+                        <p>Discover available crops</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hero-image">
+                    <div class="hero-image-content">
+                        <span>GROW. CONNECT. TRADE.</span>
+                        <h3>Better connections.<br>Better opportunities.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="text-center mb-5">
+        <span class="section-label">HOW IT WORKS</span>
+        <h2 class="section-title">A simpler way to connect</h2>
+        <p class="text-muted">
+            Everything you need to connect agricultural supply with demand.
+        </p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-number">01</div>
+                <h4>Discover produce</h4>
+                <p>
+                    Browse available crops, compare prices and find
+                    produce that meets your needs.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-number">02</div>
+                <h4>Connect directly</h4>
+                <p>
+                    Buyers can send inquiries directly to farmers
+                    about available produce.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card">
+                <div class="feature-number">03</div>
+                <h4>Find opportunities</h4>
+                <p>
+                    Farmers can discover potential buyers through
+                    our intelligent matching feature.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
