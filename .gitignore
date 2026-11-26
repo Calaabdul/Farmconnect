@@ -1,13 +1,30 @@
 # Python-generated files
 __pycache__/
 *.py[oc]
+*.pyo
 build/
 dist/
 wheels/
 *.egg-info
-staticfiles/
-media/
+
 
 # Virtual environments
-.venv
+.venv/
+venv/
+
+# Environment variables and secrets
 .env
+.env.*
+
+
+# Django generated files
+staticfiles/
+media/
+*.log
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

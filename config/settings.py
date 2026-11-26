@@ -2,7 +2,7 @@
 from pathlib import Path
 
 import environ
-
+import dj_database_url
 
 # --------------------------------------------------
 # BASE CONFIGURATION
@@ -65,6 +65,10 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+     # Cloudinary
+    "cloudinary_storage",
+    "cloudinary",
+
     # Third-party apps
     "rest_framework",
     "corsheaders",
@@ -124,17 +128,28 @@ WSGI_APPLICATION = "config.wsgi.application"
 # DATABASE
 # --------------------------------------------------
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": env("DB_NAME"),
-        "USER": env("DB_USER"),
-        "PASSWORD": env("DB_PASSWORD"),
-        "HOST": env("DB_HOST"),
-        "PORT": env("DB_PORT"),
-        "CONN_MAX_AGE": 60,
+DATABASE_URL = env("DATABASE_URL", default=None)
+
+if DATABASE_URL:
+    DATABASES = {
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": env("DB_NAME"),
+            "USER": env("DB_USER"),
+            "PASSWORD": env("DB_PASSWORD"),
+            "HOST": env("DB_HOST"),
+            "PORT": env("DB_PORT"),
+            "CONN_MAX_AGE": 60,
+        }
+    }
 
 
 # --------------------------------------------------
@@ -173,6 +188,9 @@ USE_TZ = True
 # --------------------------------------------------
 # STATIC AND MEDIA FILES
 # --------------------------------------------------
+# --------------------------------------------------
+# STATIC AND MEDIA FILES
+# --------------------------------------------------
 
 STATIC_URL = "static/"
 
@@ -182,10 +200,20 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 
 MEDIA_ROOT = BASE_DIR / "media"
 
+
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
 
 # --------------------------------------------------
 # EMAIL
